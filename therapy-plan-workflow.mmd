@@ -1,6 +1,7 @@
-graph
+graph TD
 classDef mdclass fill:#fA1;
-classDef cadeclass fill:#3ff; 
+classDef cadeclass fill:#3ff;
+classDef factclass fill:#EE8; 
 
 Provider[[Ordering Provider fa:fa-user-md]]
 Provider:::mdclass --> A(fa:fa-user-md Logs in to home clinic DEP)
@@ -17,23 +18,27 @@ Cadence[[Clinic Scheduler fa:fa-user-clock]]
 G --> |Scheduling request is generated|1
 E -.- |Treatment DEP context|1
 D -.- |Start date context|1
-1 --> 2(fa:fa-user-clock Scheduler examines request details)
-2:::cadeclass --> 3(fa:fa-user-clock Contacts patient to determine availability)
+1 --> 2(fa:fa-user-clock Examine request details)
+2:::cadeclass --> 3(fa:fa-user-clock Contact patient to determine availability)
 3:::cadeclass --> 4(fa:fa-user-clock Schedules visits)
-4:::cadeclass --> 5(fa:fa-user-clock Scheduler updates Start Date in therapy plan)
+4:::cadeclass --> 5(fa:fa-user-clock Updates Start Date in therapy plan)
 5:::cadeclass
 Cadence:::cadeclass ---> 1{{Request appears in scheduling workqueue}}
 
 
 FACT[[Financial Clearance Team fa:fa-user-check]]
-FACT ---> H{{Request appears in referral workqueue}}
-A -.- |Clinic DEP context|H
-F -.- |Infusion med context|H
-G --> |Referral is generated|H
-H --> I(Prior auth magic is worked)
-I --> J(Referral is approved)
+FACT:::factclass ---> fact.1{{Request appears in referral workqueue}}
+A -.- |Clinic DEP context|fact.1
+F -.- |Infusion med context|fact.1
+G --> |Referral is generated|fact.1
+fact.1 --> fact.2(fa:fa-user-check Prior auth magic is worked)
+fact.2:::factclass --> fact.3(fa:fa-user-check Referral is approved)
+fact.3:::factclass
 
-Nurse[Registered Nurse fa:fa-user-nurse]
+
+
+
+Nurse[[Registered Nurse fa:fa-user-nurse]]
 
 
 
