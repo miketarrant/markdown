@@ -1,22 +1,39 @@
 classDiagram
-    Animal <|-- Duck
-    Animal <|-- Fish
-    Animal <|-- Zebra
-    Animal : +int age
-    Animal : +String gender
-    Animal: +isMammal()
-    Animal: +mate()
-    class Duck{
+
+    class note{
+    Need to learn more about UML
+    and how to represent objects
+    and actors
+    }
+
+    Therapy Plan --> Schedulers
+    Therapy Plan <|-- Provider
+    Therapy Plan --> Referrals
+    Therapy Plan --> Nurse
+    Therapy Plan : Inputs Start Date 
+    Therapy Plan : Inputs Provider
+    Therapy Plan : Inputs Treatment DEP
+    Therapy Plan: 
+    Therapy Plan: +mate()
+
+    class Schedulers{
       +String beakColor
       +swim()
       +quack()
     }
-    class Fish{
+    
+
+
+    class Provider{
       -int sizeInFeet
       -canEat()
     }
-    class Zebra{
+    
+    class Referrals{
       +bool is_wild
       +run()
+    }
+
+    class Nurse{
     }
             
