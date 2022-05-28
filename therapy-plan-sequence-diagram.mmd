@@ -1,0 +1,25 @@
+sequenceDiagram
+    
+    actor Nurse
+    actor Provider
+    participant therapy plan
+    participant referral
+    actor Fin Auth Clearance Team
+    participant scheduling request
+
+
+
+    Provider-->>therapy plan : Provider's login information
+    Note over Provider,therapy plan: Prior auth is routed to the referral workqueue<br> using the login department name
+    rect rgb(191, 223, 255)    
+        Provider->>therapy plan : Start Date
+        Provider->>therapy plan : Plan Provider's Name
+        Provider->>therapy plan : Treatment Department
+        Provider->>therapy plan : Enter/modify order details
+    end
+
+
+   
+    therapy plan -->>referral: Great!
+    therapy plan ->>scheduling request: How about you?
+    scheduling request-->>therapy plan : Jolly good!
