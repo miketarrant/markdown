@@ -1,26 +1,32 @@
 flowchart TD
    
-    subgraph login
-      dep1-->dep2
+
+
+    subgraph Schedule
+      rt0-->rt1
+      rt1-->rt2
+      rt2-->rt3
     end
 
     subgraph Ordering
+      or0-->or1
+      or1-->or2
       or2-->or3
       or3-->or4
     end
 
-
-    subgraph Schedule
-    rt1-->rt2
-    rt2-->rt3
-    end
-
     subgraph Referal
-    r1-->r1
-    r1-->r2
-    r2-->r3
+      r1-->r2
+      r2-->r3
     end
      
+    subgraph provider login
+      dep0
+    end
      
+     or2-->rt1
      or3-->rt1
+     or3-->r2
      or2-->r2
+     dep0-->r1
+     dep0-->or0
