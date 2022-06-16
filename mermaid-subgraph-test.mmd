@@ -1,0 +1,26 @@
+flowchart TD
+   
+    subgraph login
+      dep1-->dep2
+    end
+
+    subgraph Ordering
+      or2-->or3
+      or3-->or4
+    end
+
+
+    subgraph Schedule
+    rt1-->rt2
+    rt2-->rt3
+    end
+
+    subgraph Referal
+    r1-->r1
+    r1-->r2
+    r2-->r3
+    end
+     
+     
+     or3-->rt1
+     or2-->r2
